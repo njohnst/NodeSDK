@@ -1384,12 +1384,10 @@ declare module PlayFabClientModels {
 
     // https://api.playfab.com/Documentation/Client/datatype/PlayFab.Client.Models/PlayFab.Client.Models.EntityKey
     export interface EntityKey {
-        // Entity profile ID.
+        // Unique ID of the entity.
         Id: string;
-        // Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+        // Type of the entity, for example 'master_player_account', 'title', 'title_player_account', 'character', or 'group'.
         Type?: string;
-        // Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-        TypeString?: string;
 
     }
 
@@ -1403,13 +1401,6 @@ declare module PlayFabClientModels {
         TokenExpiration?: string;
 
     }
-
-    type EntityTypes = "title"
-        | "master_player_account"
-        | "title_player_account"
-        | "character"
-        | "group"
-        | "service";
 
     // https://api.playfab.com/Documentation/Client/datatype/PlayFab.Client.Models/PlayFab.Client.Models.ExecuteCloudScriptRequest
     export interface ExecuteCloudScriptRequest extends PlayFabModule.IPlayFabRequestCommon {
@@ -2533,7 +2524,7 @@ declare module PlayFabClientModels {
         Annotation?: string;
         // Unique ItemId of the item to purchase.
         ItemId: string;
-        // How many of this item to purchase.
+        // How many of this item to purchase. Min 1, maximum 25.
         Quantity: number;
         // Items to be upgraded as a result of this purchase (upgraded items are hidden, as they are "replaced" by the new items).
         UpgradeFromItems?: string[];
@@ -2792,7 +2783,8 @@ declare module PlayFabClientModels {
         | "GameServer"
         | "CustomServer"
         | "NintendoSwitch"
-        | "FacebookInstantGames";
+        | "FacebookInstantGames"
+        | "OpenIdConnect";
 
     // https://api.playfab.com/Documentation/Client/datatype/PlayFab.Client.Models/PlayFab.Client.Models.LoginResult
     export interface LoginResult extends PlayFabModule.IPlayFabResultCommon {
@@ -4382,7 +4374,8 @@ declare module PlayFabClientModels {
         | "WindowsHello"
         | "ServerCustomId"
         | "NintendoSwitchDeviceId"
-        | "FacebookInstantGamesId";
+        | "FacebookInstantGamesId"
+        | "OpenIdConnect";
 
     // https://api.playfab.com/Documentation/Client/datatype/PlayFab.Client.Models/PlayFab.Client.Models.UserPrivateAccountInfo
     export interface UserPrivateAccountInfo {
